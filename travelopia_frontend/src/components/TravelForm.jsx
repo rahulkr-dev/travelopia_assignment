@@ -2,7 +2,10 @@ import React, { useState } from "react"
 import { Box, Button, FormControl, FormLabel, Input, Select } from "@chakra-ui/react";
 
 import { formPage } from "../utils/styles";
+
+// Custom Hooks
 import useCustomToast from "../hooks/useCustomToast";
+import usePostData from './../hooks/usePostData';
 
 function TravelForm() {
     const init = {
@@ -10,7 +13,12 @@ function TravelForm() {
     }
     // Managing state for controlled component
     const [formData,setFormData] = useState(init);
+    const [loading,setLoading] = useState(false);
+    const [error,setError] = useState(false);
+
+
     const customToast = useCustomToast()
+
 
     // Update state on onChnage event
     const handleChange = (e)=>{
@@ -45,8 +53,20 @@ function TravelForm() {
       }
 
       // HTTP POST Request for sending Travel Form Data
-      postTravelData({...formData});
+      
+    };
+    const postData = async()=>{
+      try{
+        setLoading(true);
+       let res = await postTravelData("/api/travel-form",{...formData});
+       setLoading(false);
+       setFormData(res.data);
 
+
+      }catch(err){
+        setLoading(false);
+        setError(false)
+      }
     }
 
   return (

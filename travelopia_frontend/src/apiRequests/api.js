@@ -1,10 +1,11 @@
 import axios from "axios"
-const baseUrl = "http://localhost:8080"
+const BASE_URL = "http://localhost:8080"
 
 // POST REQUEST
-export const postTravelData = async(data)=>{
+export const postTravelData = async(url,data)=>{
     try{
-        axios.post(`${baseUrl}/api/travel-form`,data)
+        let res = axios.post(`${BASE_URL}${url}`,data);
+        return res
     }catch(err){
         console.log({
             msg:"Post request Error",
@@ -14,15 +15,12 @@ export const postTravelData = async(data)=>{
 }
 
 // GET TRAVEL DATA
-export const fetchTravelData = async(data)=>{
+export const fetchDataFromApi = async(url)=>{
     try {
-        let res = await axios.get(`${baseUrl}/api/travel-form`);
-        res = await res.json();
-        return res.data;
-    } catch (error) {
-        console.log({
-            msg:"GET request Error",
-            error:err
-        })
+        const { data } = await axios.get(BASE_URL + url);
+        return data;
+    } catch (err) {
+        console.log(err);
+        return err;
     }
 }
