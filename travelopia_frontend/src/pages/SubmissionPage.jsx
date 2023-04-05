@@ -55,22 +55,23 @@ function SubmissionsPage() {
   const handleSearch = (text)=>{
     console.log(text);
     let update = data.filter((name)=>name.name.includes(text))
-    console.log(update)
+    // console.log(update)
     updateData(update);
     
   }
   return (
-    <Box m="auto" p={["5px", "5px", "10px", "4rem"]}>
+    <Box m="auto" p={["5px", "5px", "10px", "4rem"]} maxW="100vw">
       {
         initialLoading ? (
           <DataLoadingSkeleton />
         ) : (
-          <Box>
+          <Box >
             <SortAndFilter handleSort={handleSort} handleSearch={handleSearch}/>
             <Text fontSize="2xl" fontWeight="bold" mb="6">
               All Submissions
             </Text>
-            <Table variant="striped">
+         <Box maxW="100vw" overflowX={"scroll"}>
+             <Table   variant="striped">
               <Thead>
                 <Tr fontSize="1.1rem">
                   <Th>Name</Th>
@@ -92,6 +93,7 @@ function SubmissionsPage() {
                 ))}
               </Tbody>
             </Table>
+         </Box>
 
             {/* Loading Indicator */}
             {

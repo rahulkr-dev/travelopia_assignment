@@ -24,8 +24,8 @@ function SortAndFilter({handleSort,handleSearch}) {
     }
 
     return (
-        <Box m="auto" bg="gray.200" p={3} mt="-3rem" mb="1rem">
-            <Flex align="center" justify="space-around">
+        <Box m="auto" bg="gray.200" p={3} mt={['-1rem',"-1rem","-2rem","-3rem"]} mb="1rem">
+            <Flex align="center" justify={['flex-start',"flex-start","space-around","space-around"]}>
                 <InputGroup w={{ base: '100%', md: 'auto' }} mr={{ md: 4 }}>
                     <InputLeftElement pointerEvents="none" children={<ChevronDownIcon />} />
                     <Menu>
