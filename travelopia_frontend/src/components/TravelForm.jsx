@@ -60,7 +60,7 @@ function TravelForm() {
       // HTTP POST Request for sending Travel Form Data
       
     };
-    
+
     const postData = async()=>{
       try{
         setLoading(true);
@@ -78,7 +78,7 @@ function TravelForm() {
       }
     }
 
-    console.log(loading,error)
+    // console.log(loading,error)
 
   return (
     <Box 
@@ -155,7 +155,7 @@ function TravelForm() {
       
       bg="linear-gradient(90deg, rgba(3,8,11,0.9640231092436975) 0%, rgba(1,14,17,0.8547794117647058) 0%, rgba(97,122,233,1) 0%, rgba(68,228,191,0.958420868347339) 100%, rgba(68,228,191,0.958420868347339) 100%)"
       w="full" onClick={handleSubmit} mt={6} colorScheme="linkedin" size="lg" type="submit">
-        {loading?<Spinner />:"Submit"}
+        {loading?<BeatLoader />:"Submit"}
       </Button>
     </Box>
   );

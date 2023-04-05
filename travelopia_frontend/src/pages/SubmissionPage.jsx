@@ -2,12 +2,13 @@ import React from 'react'
 import { Box, Text, Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import useFetch from '../hooks/useFetch';
 import DataLoadingSkeleton from '../components/DataLoadingSkeleton';
+import BeatLoader from '../components/BeatLoader';
 
 function SubmissionsPage() {
   const { loading, error, data, initialLoading } = useFetch("/api/travel-form");
-  console.log(loading, error, data,initialLoading)
+  console.log(loading, error, data, initialLoading)
   return (
-    <Box m="auto" p={["5px","5px","10px","4rem"]}>
+    <Box m="auto" p={["5px", "5px", "10px", "4rem"]}>
       {
         initialLoading ? (
           <DataLoadingSkeleton />
@@ -38,6 +39,12 @@ function SubmissionsPage() {
                 ))}
               </Tbody>
             </Table>
+
+            {/* Loading Indicator */}
+            {
+              loading && <BeatLoader />
+            }
+
           </Box>
         )
       }

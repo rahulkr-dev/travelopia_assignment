@@ -7,13 +7,12 @@ function DataLoadingSkeleton() {
     return (
         <Box w="full" h="100vh" bg="#22c1c3" height="full" my="4" p="2rem">
             <SkeletonText noOfLines={1} skeletonHeight={"3rem"} w="10rem" my="3rem" />
-            <Table>
-                <Thead>
-                    <Tr>
+      
+                    <Box>
                         <SkeletonText noOfLines={1} skeletonHeight={"2rem"} my="1.5rem" />
-                    </Tr>
-                </Thead>
-                <Tbody>
+                    </Box>
+            
+              
                     <Grid gap="2rem" templateColumns={"repeat(5,1fr)"}>
                         <SkeletonText my="15px" noOfLines={10} spacing={"10px"} skeletonHeight={"1rem"} />
                         <SkeletonText my="15px" noOfLines={10} spacing={"10px"} skeletonHeight={"1rem"} />
@@ -22,8 +21,6 @@ function DataLoadingSkeleton() {
                         <SkeletonText my="15px" noOfLines={10} spacing={"10px"} skeletonHeight={"1rem"} />
                     
                     </Grid>
-                </Tbody>
-            </Table>
         </Box>
     );
 }
