@@ -12,7 +12,7 @@ function TravelForm() {
     const [formData,setFormData] = useState(init);
     const customToast = useCustomToast()
 
-    // update state on onChnage event
+    // Update state on onChnage event
     const handleChange = (e)=>{
         const {name,value} = e.target;
 
@@ -24,6 +24,7 @@ function TravelForm() {
 
     //  Handling Form Submit and form Validation
     const handleSubmit = ()=>{
+
       // Form Validation from fronend
       // Validate for Empty fieds
       const {name,email,destination,numTravellers,budgetPerPerson} = formData
@@ -42,6 +43,9 @@ function TravelForm() {
         let status="error"
         customToast(title,description,status)
       }
+
+      // HTTP POST Request for sending Travel Form Data
+      postTravelData({...formData});
 
     }
 
