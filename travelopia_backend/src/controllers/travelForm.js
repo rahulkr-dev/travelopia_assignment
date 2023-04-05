@@ -25,7 +25,7 @@ const getTravelFormData = async (req, res, next) => {
     try {
         const travelData = await TravelForm.find().sort({createdAt:"desc"});
         res.status(200).json({
-            data
+            data:travelData
         })
     } catch (error) {
         next(error)
