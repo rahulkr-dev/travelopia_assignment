@@ -10,7 +10,7 @@ const TavelFormPage = () => {
     return (
         <>
             {/* <Navbar /> */}
-            <Box w="100vw" h="90vh" p="0" mt="-2rem"
+            <Box w="100vw" h="80vh" p="0" mt="-2rem"
                 clipPath={formPage.clipPath}
                 bg={formPage.linear_gradient}
             >

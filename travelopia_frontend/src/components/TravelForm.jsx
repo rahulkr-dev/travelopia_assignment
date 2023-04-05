@@ -70,7 +70,9 @@ function TravelForm() {
        let title="Submit sucessfully"
        let description="We sucessfully submit your data."
        let status="success"
-       customToast(title,description,status)
+       customToast(title,description,status);
+       setFormData(init);
+
      }catch(err){
         setLoading(false);
         setError(false);
@@ -89,12 +91,16 @@ function TravelForm() {
     }}
     bg="#fff"
     pos={"absolute"}
-    top="6rem"
-    left={["2rem","4rem","6rem","15rem"]}
-    w={["80vw","60vw","50vw","25vw"]} maxW="lg" mx="auto" mt={8} p={"1rem"} borderWidth={1} borderRadius="md">
+    top="5rem"
+    left={["2rem","4rem","6rem","18rem"]}
+    w={["80vw","60vw","50vw","25vw"]} maxW="lg" mx="auto" mt={8} p={"1rem"} borderWidth={1} borderRadius="md"
+    fontSize={".8rem"}
+    >
       <FormControl isRequired>
-        <FormLabel fontSize={"1.1rem"}>Name:</FormLabel>
+        <FormLabel fontSize={".8rem"} >Name:</FormLabel>
         <Input
+        fontSize={".8rem"}
+        size={"sm"}
          type="text" value={formData.name} name="name" onChange={handleChange} 
          borderWidth={"2px"}
         variant={"filled"}
@@ -102,18 +108,22 @@ function TravelForm() {
         placeholder="Enter your name" />
       </FormControl>
 
-      <FormControl isRequired mt={4}>
-        <FormLabel fontSize={"1.1rem"}>Email address:</FormLabel>
+      <FormControl isRequired mt={2}>
+        <FormLabel fontSize={".8rem"} >Email address:</FormLabel>
         <Input
+         fontSize={".8rem"}
+         size={"sm"}
          borderWidth={"2px"}
          variant={"filled"}
         focusBorderColor='lime'
         type="email" value={formData.email} name="email" onChange={handleChange} placeholder="Enter your email" />
       </FormControl>
 
-      <FormControl isRequired mt={4}>
-        <FormLabel fontSize={"1.1rem"}>Where do you want to go?</FormLabel>
+      <FormControl isRequired mt={2}>
+        <FormLabel fontSize={".8rem"} >Where do you want to go?</FormLabel>
         <Select 
+         fontSize={".8rem"}
+         size={"sm"}
          borderWidth={"2px"}
          variant={"filled"}
         focusBorderColor="lime"
@@ -124,27 +134,33 @@ function TravelForm() {
         </Select>
       </FormControl>
 
-      <FormControl isRequired mt={4}>
-        <FormLabel fontSize={"1.1rem"}>No. of travellers:</FormLabel>
+      <FormControl isRequired mt={2}>
+        <FormLabel fontSize={".8rem"} >No. of travellers:</FormLabel>
         <Input 
+         fontSize={".8rem"}
+         size={"sm"}
          borderWidth={"2px"}
          variant={"filled"}
         focusBorderColor="lime"
         type="number" value={formData.numTravellers} name="numTravellers" onChange={handleChange} placeholder="Enter number of travellers" min={1} />
       </FormControl>
 
-      <FormControl isRequired mt={4}>
-        <FormLabel fontSize={"1.1rem"}>Budget per person:</FormLabel>
+      <FormControl isRequired mt={2}>
+        <FormLabel fontSize={".8rem"} >Budget per person:</FormLabel>
         <Input 
+         fontSize={".8rem"}
+         size={"sm"}
          borderWidth={"2px"}
          variant={"filled"}
         focusBorderColor="lime"
         type="number" value={formData.budgetPerPerson} name="budgetPerPerson" onChange={handleChange} placeholder="Enter budget per person" min={0} step={0.01} />
       </FormControl>
 
-      <FormControl isRequired mt={4}>
-        <FormLabel fontSize={"1.1rem"}>Currency:</FormLabel>
+      <FormControl isRequired mt={2}>
+        <FormLabel fontSize={".8rem"} >Currency:</FormLabel>
         <Input 
+         fontSize={".8rem"}
+         size={"sm"}
          borderWidth={"2px"}
          variant={"filled"}
         focusBorderColor="lime"
@@ -154,7 +170,7 @@ function TravelForm() {
       <Button
       
       bg="linear-gradient(90deg, rgba(3,8,11,0.9640231092436975) 0%, rgba(1,14,17,0.8547794117647058) 0%, rgba(97,122,233,1) 0%, rgba(68,228,191,0.958420868347339) 100%, rgba(68,228,191,0.958420868347339) 100%)"
-      w="full" onClick={handleSubmit} mt={6} colorScheme="linkedin" size="lg" type="submit">
+      w="full" onClick={handleSubmit} mt={6} colorScheme="linkedin" size="sm" type="submit">
         {loading?<BeatLoader />:"Submit"}
       </Button>
     </Box>

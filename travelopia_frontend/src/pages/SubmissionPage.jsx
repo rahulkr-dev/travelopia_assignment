@@ -71,9 +71,9 @@ function SubmissionsPage() {
               All Submissions
             </Text>
          <Box maxW="100vw" overflowX={"scroll"}>
-             <Table   variant="striped">
+             <Table size={"sm"}   variant="striped">
               <Thead>
-                <Tr fontSize="1.1rem">
+                <Tr fontSize=".8rem">
                   <Th>Name</Th>
                   <Th>Email</Th>
                   <Th>Destination</Th>
@@ -83,7 +83,7 @@ function SubmissionsPage() {
               </Thead>
               <Tbody>
                 {data?.map((submission) => (
-                  <Tr key={submission._id}>
+                  <Tr key={submission._id} fontSize={".7rem"}>
                     <Td>{submission.name}</Td>
                     <Td>{submission.email}</Td>
                     <Td>{submission.destination}</Td>

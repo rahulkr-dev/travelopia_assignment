@@ -29,7 +29,7 @@ function SortAndFilter({handleSort,handleSearch}) {
                 <InputGroup w={{ base: '100%', md: 'auto' }} mr={{ md: 4 }}>
                     <InputLeftElement pointerEvents="none" children={<ChevronDownIcon />} />
                     <Menu>
-                        <MenuButton fontFamily={"cursive"} as={Button} rightIcon={<ChevronDownIcon />}>Sort:</MenuButton>
+                        <MenuButton size={"sm"} fontFamily={"cursive"} as={Button} rightIcon={<ChevronDownIcon />}>Sort:</MenuButton>
                         <MenuList>
                             <MenuItem onClick={()=>handleSort("A-Z")}>
                                 {"  Name (A-Z)"}
@@ -48,6 +48,7 @@ function SortAndFilter({handleSort,handleSearch}) {
                 </InputGroup>
                 <InputGroup w={{ base: '100%', md: 'auto' }}>
                     <Input
+                    size={"sm"}
                         value={searchText}
                         onChange={(e)=>handleSearchFuntion(e)}
                         fontFamily={"cursive"}
