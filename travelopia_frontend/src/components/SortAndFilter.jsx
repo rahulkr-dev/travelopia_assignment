@@ -14,9 +14,14 @@ import {
 } from '@chakra-ui/react';
 import { ChevronDownIcon, SearchIcon } from '@chakra-ui/icons';
 
-function SortAndFilter({handleSort}) {
+function SortAndFilter({handleSort,handleSearch}) {
     const [searchText,setSearchText] = useState("");
-    const [sort,setSort] = useState("")
+    const [sort,setSort] = useState("");
+
+    const handleSearchFuntion = (e)=>{
+        setSearchText(e.target.value);
+        handleSearch(e.target.value);
+    }
 
     return (
         <Box m="auto" bg="gray.200" p={3} mt="-3rem" mb="1rem">
@@ -44,7 +49,7 @@ function SortAndFilter({handleSort}) {
                 <InputGroup w={{ base: '100%', md: 'auto' }}>
                     <Input
                         value={searchText}
-                        onChange={(e)=>setSearchText(e.target.value)}
+                        onChange={(e)=>handleSearchFuntion(e)}
                         fontFamily={"cursive"}
                         placeholder="Search"
                         focusBorderColor='gray.500'

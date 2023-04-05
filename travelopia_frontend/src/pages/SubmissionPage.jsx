@@ -49,10 +49,15 @@ function SubmissionsPage() {
         return;
       }
     }
-    // SEARCHING LOGIC
-    const handleSearch = (text)=>{
-      console.log(text);
-    }
+  }
+
+  // SEARCHING LOGIC
+  const handleSearch = (text)=>{
+    console.log(text);
+    let update = data.filter((name)=>name.name.includes(text))
+    console.log(update)
+    updateData(update);
+    
   }
   return (
     <Box m="auto" p={["5px", "5px", "10px", "4rem"]}>
@@ -61,7 +66,7 @@ function SubmissionsPage() {
           <DataLoadingSkeleton />
         ) : (
           <Box>
-            <SortAndFilter handleSort={handleSort} />
+            <SortAndFilter handleSort={handleSort} handleSearch={handleSearch}/>
             <Text fontSize="2xl" fontWeight="bold" mb="6">
               All Submissions
             </Text>
