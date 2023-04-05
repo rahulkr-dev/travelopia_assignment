@@ -25,14 +25,24 @@ function TravelForm() {
     //  Handling Form Submit and form Validation
     const handleSubmit = ()=>{
       // Form Validation from fronend
+      // Validate for Empty fieds
+      const {name,email,destination,numTravellers,budgetPerPerson} = formData
       if(!name || !email || !destination || !numTravellers || !budgetPerPerson){
-        // alert("Empty")
         // title,description,status,duration,position,isClosable as argumnet
         let title="Something went wrong"
         let description="Oops, it looks like you missed a required field."
         let status="error"
         customToast(title,description,status)
+      };
+
+      // Validate for Email
+      if(!email.includes('@gmail.com')){
+        let title="Something went wrong"
+        let description="Invalid email format. Please enter a valid email address."
+        let status="error"
+        customToast(title,description,status)
       }
+
     }
 
   return (
