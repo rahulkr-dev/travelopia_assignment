@@ -2,13 +2,17 @@ import React, { useState } from "react"
 import { Box, Button, FormControl, FormLabel, Input, Select } from "@chakra-ui/react";
 
 import { formPage } from "../utils/styles";
+import useCustomToast from "../hooks/useCustomToast";
 
 function TravelForm() {
     const init = {
-        name:"",email:"",destination:"",travellers:"",budget:""
+        name:"",email:"",destination:"",numTravellers:"",budgetPerPerson:""
     }
+    // Managing state for controlled component
     const [formData,setFormData] = useState(init);
+    const customToast = useCustomToast()
 
+    // update state on onChnage event
     const handleChange = (e)=>{
         const {name,value} = e.target;
 
@@ -18,10 +22,19 @@ function TravelForm() {
         })
     };
 
+    //  Handling Form Submit and form Validation
     const handleSubmit = ()=>{
-        console.log('hello')
-        console.log(formData)
+      // Form Validation from fronend
+      if(!name || !email || !destination || !numTravellers || !budgetPerPerson){
+        // alert("Empty")
+        // title,description,status,duration,position,isClosable as argumnet
+        let title="Something went wrong"
+        let description="Oops, it looks like you missed a required field."
+        let status="error"
+        customToast(title,description,status)
+      }
     }
+
   return (
     <Box  
     boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
@@ -72,7 +85,7 @@ function TravelForm() {
          borderWidth={"2px"}
          variant={"filled"}
         focusBorderColor="lime"
-        type="number" value={formData.travellers} name="travellers" onChange={handleChange} placeholder="Enter number of travellers" min={1} />
+        type="number" value={formData.numTravellers} name="numTravellers" onChange={handleChange} placeholder="Enter number of travellers" min={1} />
       </FormControl>
 
       <FormControl isRequired mt={4}>
@@ -81,7 +94,7 @@ function TravelForm() {
          borderWidth={"2px"}
          variant={"filled"}
         focusBorderColor="lime"
-        type="number" value={formData.budget} name="budget" onChange={handleChange} placeholder="Enter budget per person" min={0} step={0.01} />
+        type="number" value={formData.budgetPerPerson} name="budgetPerPerson" onChange={handleChange} placeholder="Enter budget per person" min={0} step={0.01} />
       </FormControl>
 
       <FormControl isRequired mt={4}>
