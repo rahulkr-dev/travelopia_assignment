@@ -5,7 +5,7 @@ const BASE_URL = "http://localhost:8080"
 export const postTravelData = async(url,data)=>{
     try{
         let res = axios.post(`${BASE_URL}${url}`,data);
-        return res
+        return "Sucess"
     }catch(err){
         console.log({
             msg:"Post request Error",

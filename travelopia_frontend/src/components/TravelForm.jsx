@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { Box, Button, FormControl, FormLabel, Input, Select } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Input, Select, Spinner } from "@chakra-ui/react";
 
 import { formPage } from "../utils/styles";
+import BeatLoader from "./BeatLoader";
 
 // Custom Hooks
 import useCustomToast from "../hooks/useCustomToast";
-import usePostData from './../hooks/usePostData';
+import { postTravelData } from './../apiRequests/api';
 
 function TravelForm() {
     const init = {
@@ -15,6 +16,7 @@ function TravelForm() {
     const [formData,setFormData] = useState(init);
     const [loading,setLoading] = useState(false);
     const [error,setError] = useState(false);
+    const [sucess,setSucess] = useState('failed')
 
 
     const customToast = useCustomToast()
@@ -42,35 +44,44 @@ function TravelForm() {
         let description="Oops, it looks like you missed a required field."
         let status="error"
         customToast(title,description,status)
-      };
+        return;
 
-      // Validate for Email
-      if(!email.includes('@gmail.com')){
+      }else if(!email.includes('@gmail.com')){
+        // Validate for Email
         let title="Something went wrong"
         let description="Invalid email format. Please enter a valid email address."
         let status="error"
-        customToast(title,description,status)
+        customToast(title,description,status);
+        return;
       }
+
+      postData()
 
       // HTTP POST Request for sending Travel Form Data
       
     };
+    
     const postData = async()=>{
       try{
         setLoading(true);
        let res = await postTravelData("/api/travel-form",{...formData});
        setLoading(false);
-       setFormData(res.data);
-
-
-      }catch(err){
+       setSucess("sucess");
+       let title="Submit sucessfully"
+       let description="We sucessfully submit your data."
+       let status="success"
+       customToast(title,description,status)
+     }catch(err){
         setLoading(false);
-        setError(false)
+        setError(false);
+        setSucess('failed');
       }
     }
 
+    console.log(loading,error)
+
   return (
-    <Box  
+    <Box 
     boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
     transition={"all 1s ease"}
     _hover={{
@@ -141,9 +152,10 @@ function TravelForm() {
       </FormControl>
 
       <Button
+      
       bg="linear-gradient(90deg, rgba(3,8,11,0.9640231092436975) 0%, rgba(1,14,17,0.8547794117647058) 0%, rgba(97,122,233,1) 0%, rgba(68,228,191,0.958420868347339) 100%, rgba(68,228,191,0.958420868347339) 100%)"
       w="full" onClick={handleSubmit} mt={6} colorScheme="linkedin" size="lg" type="submit">
-        Submit
+        {loading?<Spinner />:"Submit"}
       </Button>
     </Box>
   );
