@@ -12,7 +12,6 @@ function DataLoadingSkeleton() {
                         <SkeletonText noOfLines={1} skeletonHeight={"2rem"} my="1.5rem" />
                     </Box>
             
-              
                     <Grid gap="2rem" templateColumns={"repeat(5,1fr)"}>
                         <SkeletonText my="15px" noOfLines={10} spacing={"10px"} skeletonHeight={"1rem"} />
                         <SkeletonText my="15px" noOfLines={10} spacing={"10px"} skeletonHeight={"1rem"} />

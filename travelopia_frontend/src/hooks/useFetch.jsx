@@ -14,7 +14,7 @@ const useFetch = (url) => {
         fetchDataFromApi(url)
             .then((res) => {
                 setLoading(false);
-                setData(res);
+                setData(res.data);
                 setInitialLoading(false);
             })
             .catch((err) => {
@@ -24,7 +24,11 @@ const useFetch = (url) => {
             });
     }, [url]);
 
-    return { data, loading, error,initialLoading };
+    const updateData = (newData)=>{
+        setData(newData);
+    }
+
+    return { data, loading, error,initialLoading,updateData };
 };
 
 export default useFetch;
