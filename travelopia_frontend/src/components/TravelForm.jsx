@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { Box, Button, FormControl, FormLabel, Input, Select } from "@chakra-ui/react";
 
+import { formPage } from "../utils/styles";
+
 function TravelForm() {
     const init = {
         name:"",email:"",destination:"",travellers:"",budget:""
@@ -25,7 +27,7 @@ function TravelForm() {
     boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
     transition={"all 1s ease"}
     _hover={{
-        boxShadow:"rgba(97, 122, 233, 0.4) 5px 5px, rgba(97, 122, 233, 0.3) 10px 10px, rgba(97, 122, 233, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px"
+        boxShadow:formPage.formComponent.boxShadowOnHover
     }}
     bg="#fff"
     pos={"absolute"}
