@@ -25,11 +25,10 @@ To view and use the frontend pages for this assignment, follow these steps:
 4. Start the server by running the following command:
 `npm run dev`
 5. Fill out the form on the first page and click the submit button.
-![Form](./travelopia_frontend/src/assets/form.png "User travel form"){:title="Travel form" width="600px"}
+![form](https://user-images.githubusercontent.com/103633895/230840733-204f3b36-2f2d-4aae-8c91-d14050446201.png)
 
 6. Navigate to the second page to view all the submissions made using the form on the first page, along with sort and search functionality.
-![Form](./travelopia_frontend/src/assets/table.png "Submission page"){:title="Submission page" width="800px"}
-
+![table](https://user-images.githubusercontent.com/103633895/230840962-3e28e309-3c92-4e26-be42-4f514d05a1ba.png)
 ### Sorting
 You can sort the submissions by clicking on the sort button.
 
